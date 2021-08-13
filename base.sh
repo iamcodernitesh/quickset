@@ -77,8 +77,6 @@ do
 				echo "KDE Desktop Environment Installation"
 				sudo pacman -S sddm --noconfirm
 				sudo pacman -S --needed plasma kde-applications-meta --noconfirm
-				cd /usr/lib/sddm/sddm.conf.d/
-				sudo sed -i '/Current=/c\Current=breeze' default.conf
 				echo -e "\e[32m Install Display Manager (Recommended SDDM) \e[0m"
 				echo -e "\e[37m \e[0m"
 				jumpto dmmenu
@@ -166,13 +164,16 @@ do
             		elif [[ "$dminput" -eq 3 ]] ;then
             			sudo pacman -S sddm --noconfirm
             			cd /usr/lib/sddm/sddm.conf.d/
-				if [[ "$deinput" -eq 2 ]] ;then
-					cd /usr/lib/sddm/sddm.conf.d/
-					sudo sed -i '/Current=/c\Current=breeze' default.conf
-				fi
+				echo "Which theme do you want ?"
+				echo "You can search the names on AUR"
+				echo "1) archlinux-themes-sddm (Preview: )"
+				echo "2) Breeze (Preview: )"
+				echo "3) sddm-archlinux-theme-git (Preview: )"
+				echo "4) sddm-theme-deepin-git (Preview: )"
 				
+				yay -S archlinux-themes-sddm
             			sudo sed -i '/Numlock=/c\Numlock=on' default.conf
-            			sudo sed -i '/Current=/c\Current=archlinux' default.conf
+            			sudo sed -i '/Current=/c\Current=archlinux-soft-grey' default.conf
             			sudo systemctl enable sddm.service
 				jumpto start
 			fi            	
