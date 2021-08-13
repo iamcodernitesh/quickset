@@ -84,32 +84,36 @@ do
 				jumpto dmmenu
 			elif [[ "$deinput" -eq 3 ]] ;then
 				echo "Cinnamon Desktop Environment Installation"
-				jumpto start
+				sudo pacman -S cinnamon --noconfirm
+				echo -e "\e[32m Install Display Manager (Recommended Lightdm) \e[0m"
+				echo -e "\e[37m \e[0m"
+				jumpto dmmenu
 			elif [[ "$deinput" -eq 4 ]] ;then
 				echo "Deepin Desktop Environment Installation"
-				jumpto start
+				
+				jumpto dmmenu
 			elif [[ "$deinput" -eq 5 ]] ;then
 				echo "LXDE Installation"
-				jumpto start
+				jumpto dmmenu
 			elif [[ "$deinput" -eq 6 ]] ;then
 				echo "LXQT Desktop Environment Installation"
-				jumpto start
+				jumpto dmmenu
 			elif [[ "$deinput" -eq 7 ]] ;then
 				echo "Mate Desktop Environment Installation"
-				jumpto start
+				jumpto dmmenu
 			elif [[ "$deinput" -eq 8 ]] ;then
 				echo "XFCE Desktop Environment Installation"
-				jumpto start
+				jumpto dmmenu
 			elif [[ "$deinput" -eq 9 ]] ;then
 				echo "i3 Window Manager Installation"
 				sudo pacman -S i3-gaps i3lock i3status-rust
-				jumpto start
+				jumpto dmmenu
 			elif [[ "$deinput" -eq 10 ]] ;then
 				echo "bspwm Installation"
-				jumpto start
+				jumpto dmmenu
 			elif [[ "$deinput" -eq 11 ]] ;then
 				echo "awesome window Manager Installation"
-				jumpto start		            
+				jumpto dmmenu		            
 	    		fi
 	    
             	elif [[ "$input1" -eq 3 ]] ;then
