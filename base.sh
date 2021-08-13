@@ -76,6 +76,8 @@ do
 				echo "KDE Desktop Environment Installation"
 				sudo pacman -S --needed sddm --noconfirm
 				sudo pacman -S --needed plasma kde-applications-meta --noconfirm
+				cd /usr/lib/sddm/sddm.conf.d/
+				sudo sed -i '/Current=/c\Current=breeze' default.conf
 				jumpto start
 			elif [[ "$deinput" -eq 3 ]] ;then
 				echo "Cinnamon Desktop Environment Installation"
