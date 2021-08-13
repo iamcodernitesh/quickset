@@ -69,6 +69,7 @@ do
          
             		if [[ "$deinput" -eq 1 ]] ;then
 				echo "Budgie Desktop Environment Installation"
+				sudo pacman -S budgie-desktop
 			elif [[ "$deinput" -eq 2 ]] ;then
 				echo GNOME Desktop Environmment Installation
 				sudo pacman -S gnome --noconfirm
@@ -82,7 +83,7 @@ do
 				echo "Cinnamon Desktop Environment Installation"
 				jumpto start
 			elif [[ "$deinput" -eq 5 ]] ;then
-				echo "Deepin Desktolp Environment Installation"
+				echo "Deepin Desktop Environment Installation"
 				jumpto start
 			elif [[ "$deinput" -eq 6 ]] ;then
 				echo "LXDE Installation"
