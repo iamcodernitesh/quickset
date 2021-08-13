@@ -53,58 +53,54 @@ do
             		jumpto start
             	elif [[ "$input1" -eq 2 ]] ;then
                 	echo ********** Desktop Environments **********
-            		echo "1> Budgie"
-            		echo "2> Gnome"
-            		echo "3> KDE"
-            		echo "4> Cinnamon"
-            		echo "5> Deepin"
-            		echo "6> LXDE"
-            		echo "7> LXQT"
-            		echo "8> Mate"
-            		echo "9> XFCE"
-            		echo "10> i3"
-            		echo "11> bspwm"
-            		echo "12> awesome"
+            		echo "1> Gnome"
+            		echo "2> KDE"
+            		echo "3> Cinnamon"
+            		echo "4> Deepin"
+            		echo "5> LXDE"
+            		echo "6> LXQT"
+            		echo "7> Mate"
+            		echo "8> XFCE"
+            		echo "9> i3"
+            		echo "10> bspwm"
+            		echo "11> awesome"
             		read deinput
          
-            		if [[ "$deinput" -eq 1 ]] ;then
-				echo "Budgie Desktop Environment Installation"
-				sudo pacman -S budgie-desktop
-			elif [[ "$deinput" -eq 2 ]] ;then
+			if [[ "$deinput" -eq 1 ]] ;then
 				echo GNOME Desktop Environmment Installation
 				sudo pacman -S gnome --noconfirm
 				sudo pacman -R
 				jumpto start
 		
-			elif [[ "$deinput" -eq 3 ]] ;then
+			elif [[ "$deinput" -eq 2 ]] ;then
 				echo "KDE Desktop Environment Installation"
 				jumpto start
-			elif [[ "$deinput" -eq 4 ]] ;then
+			elif [[ "$deinput" -eq 3 ]] ;then
 				echo "Cinnamon Desktop Environment Installation"
 				jumpto start
-			elif [[ "$deinput" -eq 5 ]] ;then
+			elif [[ "$deinput" -eq 4 ]] ;then
 				echo "Deepin Desktop Environment Installation"
 				jumpto start
-			elif [[ "$deinput" -eq 6 ]] ;then
+			elif [[ "$deinput" -eq 5 ]] ;then
 				echo "LXDE Installation"
 				jumpto start
-			elif [[ "$deinput" -eq 7 ]] ;then
+			elif [[ "$deinput" -eq 6 ]] ;then
 				echo "LXQT Desktop Environment Installation"
 				jumpto start
-			elif [[ "$deinput" -eq 8 ]] ;then
+			elif [[ "$deinput" -eq 7 ]] ;then
 				echo "Mate Desktop Environment Installation"
 				jumpto start
-			elif [[ "$deinput" -eq 9 ]] ;then
+			elif [[ "$deinput" -eq 8 ]] ;then
 				echo "XFCE Desktop Environment Installation"
 				jumpto start
-			elif [[ "$deinput" -eq 10 ]] ;then
+			elif [[ "$deinput" -eq 9 ]] ;then
 				echo "i3 Window Manager Installation"
 				sudo pacman -S i3-gaps i3lock i3status-rust
 				jumpto start
-			elif [[ "$deinput" -eq 11 ]] ;then
+			elif [[ "$deinput" -eq 10 ]] ;then
 				echo "bspwm Installation"
 				jumpto start
-			elif [[ "$deinput" -eq 12 ]] ;then
+			elif [[ "$deinput" -eq 11 ]] ;then
 				echo "awesome window Manager Installation"
 				jumpto start		            
 	    		fi
