@@ -67,6 +67,7 @@ do
             		read deinput
          
             		if [[ "$deinput" -eq 1 ]] ;then
+				echo "Budgie Desktop Environment Installation"
 			elif [[ "$deinput" -eq 2 ]] ;then
 				echo GNOME Desktop Environmment Installation
 				sudo pacman -S gnome --noconfirm
