@@ -1,5 +1,5 @@
 #!/bin/bash
-# include this boilerplate
+
 function jumpto
 {
     label=$1
