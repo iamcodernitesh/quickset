@@ -150,6 +150,7 @@ do
             		elif [[ "$dminput" -eq 2 ]] ;then
             			sudo pacman -S gdm --noconfirm
             			sudo systemctl enable gdm.service
+				jumpto start
 ################################## SDDM ########################################################            		
             		elif [[ "$dminput" -eq 3 ]] ;then
             			sudo pacman -S sddm
@@ -159,30 +160,34 @@ do
             			sudo sed -i '/Numlock=/c\Numlock=on' sddm.conf
             			sudo sed -i '/Current=/c\Current=archlinux' sddm.conf
             			sudo systemctl enable sddm.service
+				jumpto start
             	
             	
 	    	elif [[ "$input1" -eq 4 ]] ;then
-	    		echo Multimedia Installations
+	    		echo "Multimedia Installations"
 	    		sudo pacman -S mpv vlc ffmpeg
 	    		yay -S mps-youtube-git
 	    		yay -S youtube-viewer
+			jumpto start
 	    
 	    	elif [[ "$input1" -eq 5 ]] ;then
-	    		echo Development Tools Installation
+	    		echo "Development Tools Installation"
 	    	
 	    		sudo pacman -S cmake clang nodejs npm jdk11-openjdk
 	    		curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 			# input 1
 			source $HOME/.cargo/env
 			source ~/.profile
+			jumpto start
 	    	
 	    	elif [[ "$input1" -eq 6 ]] ;then
 	    		echo Productivity Apps Installation
-	    		
 	    		yay -S notion-app-enhanced whatsapp-for-linux newsflash 
+			jumpto start
 	    	
 	    	elif [[ "$input1" -eq 7 ]] ;then
-	    		
+	    		echo "Terminal Setup"
+			jumpto start
 	    	
 	    	elif [[ "$input1" -eq 8 ]] ;then
 	    		jumpto end
