@@ -69,8 +69,9 @@ do
 			if [[ "$deinput" -eq 1 ]] ;then
 				echo GNOME Desktop Environmment Installation
 				sudo pacman -S gnome --noconfirm
-				sudo pacman -R
-				jumpto start
+				echo -e "\e[32m Install Display Manager (Recommended GDM) \e[0m"
+				echo -e "\e[37m \e[0m"
+				jumpto dmmenu
 		
 			elif [[ "$deinput" -eq 2 ]] ;then
 				echo "KDE Desktop Environment Installation"
@@ -110,6 +111,7 @@ do
 	    		fi
 	    
             	elif [[ "$input1" -eq 3 ]] ;then
+			dmmenu:
             		echo Login / Display Managers
                 	echo i> Lightdm
             		echo ii> GDM
