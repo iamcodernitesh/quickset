@@ -75,11 +75,13 @@ do
 		
 			elif [[ "$deinput" -eq 2 ]] ;then
 				echo "KDE Desktop Environment Installation"
-				sudo pacman -S --needed sddm --noconfirm
+				sudo pacman -S sddm --noconfirm
 				sudo pacman -S --needed plasma kde-applications-meta --noconfirm
 				cd /usr/lib/sddm/sddm.conf.d/
 				sudo sed -i '/Current=/c\Current=breeze' default.conf
-				jumpto start
+				echo -e "\e[32m Install Display Manager (Recommended SDDM) \e[0m"
+				echo -e "\e[37m \e[0m"
+				jumpto dmmenu
 			elif [[ "$deinput" -eq 3 ]] ;then
 				echo "Cinnamon Desktop Environment Installation"
 				jumpto start
@@ -158,12 +160,11 @@ do
 					jumpto start
 ################################## SDDM ########################################################            		
             		elif [[ "$dminput" -eq 3 ]] ;then
-            			sudo pacman -S sddm
-            			yay -S sddm-archlinux-theme-git
-            			sudo cp /usr/lib/sddm/sddm.conf.d/default.conf /etc/sddm.conf
-            			cd /etc/
-            			sudo sed -i '/Numlock=/c\Numlock=on' sddm.conf
-            			sudo sed -i '/Current=/c\Current=archlinux' sddm.conf
+            			sudo pacman -S sddm --noconfirm
+            			cd /usr/lib/sddm/sddm.conf.d/
+				sudo sed -i '/Current=/c\Current=breeze' default.conf
+            			sudo sed -i '/Numlock=/c\Numlock=on' default.conf
+            			sudo sed -i '/Current=/c\Current=archlinux' default.conf
             			sudo systemctl enable sddm.service
 				jumpto start
 			fi            	
