@@ -53,18 +53,18 @@ do
             		jumpto start
             	elif [[ "$input1" -eq 2 ]] ;then
                 	echo ********** Desktop Environments **********
-            		echo i> Budgie
-            		echo ii> Gnome
-            		echo iii> KDE
-            		echo iv> Cinnamon
-            		echo v> Deepin
-            		echo vi> LXDE
-            		echo vii> LXQT
-            		echo viii> Mate
-            		echo ix> XFCE
-            		echo x> i3
-            		echo xi> bspwm
-            		echo xii> awesome
+            		echo "1> Budgie"
+            		echo "2> Gnome"
+            		echo "3> KDE"
+            		echo "4> Cinnamon"
+            		echo "5> Deepin"
+            		echo "6> LXDE"
+            		echo "7> LXQT"
+            		echo "8> Mate"
+            		echo "9> XFCE"
+            		echo "10> i3"
+            		echo "11> bspwm"
+            		echo "12> awesome"
             		read deinput
          
             		if [[ "$deinput" -eq 1 ]] ;then
