@@ -191,5 +191,9 @@ do
 	    	elif [[ "$input1" -eq 8 ]] ;then
 	    		jumpto end
 	    		
-	    		
+	    	fi
+		
+	fi
+    fi
+done
 end:
