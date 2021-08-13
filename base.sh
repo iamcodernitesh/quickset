@@ -166,7 +166,11 @@ do
             		elif [[ "$dminput" -eq 3 ]] ;then
             			sudo pacman -S sddm --noconfirm
             			cd /usr/lib/sddm/sddm.conf.d/
-				sudo sed -i '/Current=/c\Current=breeze' default.conf
+				if [[ "$deinput" -eq 2 ]] ;then
+					cd /usr/lib/sddm/sddm.conf.d/
+					sudo sed -i '/Current=/c\Current=breeze' default.conf
+				fi
+				
             			sudo sed -i '/Numlock=/c\Numlock=on' default.conf
             			sudo sed -i '/Current=/c\Current=archlinux' default.conf
             			sudo systemctl enable sddm.service
