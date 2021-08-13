@@ -73,16 +73,36 @@ do
 				sudo pacman -R
 				jumpto start
 		
-			elif [[ "$deinput" -eq 3 ]] ;then
+						elif [[ "$deinput" -eq 3 ]] ;then
+				echo "KDE Desktop Environment Installation"
+				jumpto start
 			elif [[ "$deinput" -eq 4 ]] ;then
+				echo "Cinnamon Desktop Environment Installation"
+				jumpto start
 			elif [[ "$deinput" -eq 5 ]] ;then
+				echo "Deepin Desktolp Environment Installation"
+				jumpto start
 			elif [[ "$deinput" -eq 6 ]] ;then
+				echo "LXDE Installation"
+				jumpto start
 			elif [[ "$deinput" -eq 7 ]] ;then
+				echo "LXQT Desktop Environment Installation"
+				jumpto start
 			elif [[ "$deinput" -eq 8 ]] ;then
+				echo "Mate Desktop Environment Installation"
+				jumpto start
 			elif [[ "$deinput" -eq 9 ]] ;then
+				echo "XFCE Desktop Environment Installation"
+				jumpto start
 			elif [[ "$deinput" -eq 10 ]] ;then
+				echo "i3 Window Manager Installation"
+				jumpto start
 			elif [[ "$deinput" -eq 11 ]] ;then
-			elif [[ "$deinput" -eq 12 ]] ;then		            
+				echo "bspwm Installation"
+				jumpto start
+			elif [[ "$deinput" -eq 12 ]] ;then
+				echo "awesome window Manager Installation"
+				jumpto start		            
 	    		fi
 	    
             	elif [[ "$input1" -eq 3 ]] ;then
