@@ -34,14 +34,14 @@ do
         if [[ "${osInfo[$f]}" = "$pacman" ]] ;then
         	start:
             	echo ********** APP LIST **********
-            	echo 1> nvidia Drivers
-            	echo 2> Desktop Environment/ Window Manager
-            	echo 3> Login/Display Manager
-            	echo 4> Multimedia Apps (Audio/Video)
-            	echo 5> Development Tools (Build Tools + Languages)
-            	echo 6> Productivity Apps  
-            	echo 7> Terminal setup
-            	echo 8> Exit
+            	echo "1> nvidia Drivers"
+            	echo "2> Desktop Environment/ Window Manager"
+            	echo "3> Login/Display Manager"
+            	echo "4> Multimedia Apps (Audio/Video)"
+            	echo "5> Development Tools (Build Tools + Languages)"
+            	echo "6> Productivity Apps"
+            	echo "7> Terminal setup"
+            	echo "8> Exit"
             	read input1
             
             	if [[ "$input1" -eq 1 ]]
