@@ -74,7 +74,7 @@ do
 				sudo pacman -R
 				jumpto start
 		
-						elif [[ "$deinput" -eq 3 ]] ;then
+			elif [[ "$deinput" -eq 3 ]] ;then
 				echo "KDE Desktop Environment Installation"
 				jumpto start
 			elif [[ "$deinput" -eq 4 ]] ;then
@@ -122,7 +122,7 @@ do
             				cd /etc/lightdm
             				sudo sed -i '/#greeter-session=/c\greeter-session=lightdm-webkit2-greeter' lightdm.conf
             				sudo sed -i '/#greeter-setup-script=/c\greeter-setup-script=/usr/bin/numlockx on' lightdm.conf
-            				
+            			fi
             				if [[ "$deinput" -eq 10 || "$deinput" -eq 11 || "$deinput" -eq 12 ]] ;then
             					sudo sed -i '/#autologin-session=/c\autologin-session=i3' lightdm.conf
             				fi
@@ -145,6 +145,7 @@ do
             					sudo systemctl enable lightdm.service
             					jumpto start
             				fi
+			
 ################################## GDM #########################################################            	
             		elif [[ "$dminput" -eq 2 ]] ;then
             				sudo pacman -S gdm --noconfirm
@@ -160,7 +161,7 @@ do
             			sudo sed -i '/Current=/c\Current=archlinux' sddm.conf
             			sudo systemctl enable sddm.service
 				jumpto start
-            	
+			fi            	
             	
 	    	elif [[ "$input1" -eq 4 ]] ;then
 	    		echo "Multimedia Installations"
