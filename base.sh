@@ -45,7 +45,8 @@ do
             	if [[ "$input1" -eq 1 ]] ;then
             		echo -e "\e[31m IMPORTANT NOTE: Do not install nvidia drivers if you are using virtual machine without nvidia gpu passthrough which is only available in Desktop. \e[0m"
             		echo -e "\e[32m If you are using this on laptop/Desktop without virtual machine you are safe to install it. \e[0m"
-            		sudo pacman -S nvidia-lts nvidia-utils nvidia-settings
+            		echo -e "\e[37m \e[0m"
+			sudo pacman -S nvidia-lts nvidia-utils nvidia-settings
             		cd /etc/
             		sudo cp mkinitcpio.conf mkinitcpiobackup.conf
             		sed -i '/MODULES/c\MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)' mkinitcpio.conf
