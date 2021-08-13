@@ -98,6 +98,7 @@ do
 				jumpto start
 			elif [[ "$deinput" -eq 10 ]] ;then
 				echo "i3 Window Manager Installation"
+				sudo pacman -S i3-gaps i3lock i3status-rust
 				jumpto start
 			elif [[ "$deinput" -eq 11 ]] ;then
 				echo "bspwm Installation"
