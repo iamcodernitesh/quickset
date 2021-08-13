@@ -42,7 +42,7 @@ do
             	echo "8> Exit"
             	read input1
             
-            	if [[ "$input1" -eq 1 ]]
+            	if [[ "$input1" -eq 1 ]] ;then
             		echo IMPORTANT NOTE: Do not install nvidia drivers if you are using virtual machine without nvidia gpu passthrough which is only available in Desktop.
             		echo If you are using this on laptop/Desktop without virtual machine you are safe to install it
             		sudo pacman -S nvidia-lts nvidia-utils nvidia-settings
@@ -50,7 +50,7 @@ do
             		sudo cp mkinitcpio.conf mkinitcpiobackup.conf
             		sed -i '/MODULES/c\MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)' mkinitcpio.conf
             		jumpto start
-            	elif [[ "$input1" -eq 2 ]]
+            	elif [[ "$input1" -eq 2 ]] ;then
                 	echo ********** Desktop Environments **********
             		echo i> Budgie
             		echo ii> Gnome
@@ -144,13 +144,11 @@ do
             					sudo systemctl enable lightdm.service
             					jumpto start
             				fi
-            			elif 
-            	
 ################################## GDM #########################################################            	
             		elif [[ "$dminput" -eq 2 ]] ;then
-            			sudo pacman -S gdm --noconfirm
-            			sudo systemctl enable gdm.service
-				jumpto start
+            				sudo pacman -S gdm --noconfirm
+            				sudo systemctl enable gdm.service
+					jumpto start
 ################################## SDDM ########################################################            		
             		elif [[ "$dminput" -eq 3 ]] ;then
             			sudo pacman -S sddm
