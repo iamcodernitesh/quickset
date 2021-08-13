@@ -74,6 +74,8 @@ do
 		
 			elif [[ "$deinput" -eq 2 ]] ;then
 				echo "KDE Desktop Environment Installation"
+				sudo pacman -S --needed sddm --noconfirm
+				sudo pacman -S --needed plasma kde-applications-meta --noconfirm
 				jumpto start
 			elif [[ "$deinput" -eq 3 ]] ;then
 				echo "Cinnamon Desktop Environment Installation"
