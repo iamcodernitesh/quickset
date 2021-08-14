@@ -50,6 +50,7 @@ do
             		cd /etc/
             		sudo cp mkinitcpio.conf mkinitcpiobackup.conf
             		sed -i '/MODULES/c\MODULES=(nvidia nvidia_modeset nvidia_uvm nvidia_drm)' mkinitcpio.conf
+            		sudo mkinitcpio -P
             		jumpto start
             	elif [[ "$input1" -eq 2 ]] ;then
                 	echo ********** Desktop Environments **********
@@ -57,13 +58,12 @@ do
             		echo "2> KDE"
             		echo "3> Cinnamon"
             		echo "4> Deepin"
-            		echo "5> LXDE"
-            		echo "6> LXQT"
-            		echo "7> Mate"
-            		echo "8> XFCE"
-            		echo "9> i3"
-            		echo "10> bspwm"
-            		echo "11> awesome"
+            		echo "5> LXQT"
+            		echo "6> Mate"
+            		echo "7> XFCE"
+            		echo "8> i3"
+            		echo "9> bspwm"
+            		echo "10> awesome"
             		read deinput
          
 			if [[ "$deinput" -eq 1 ]] ;then
@@ -83,39 +83,60 @@ do
 			elif [[ "$deinput" -eq 3 ]] ;then
 				echo "Cinnamon Desktop Environment Installation"
 				sudo pacman -S cinnamon --noconfirm
-				echo -e "\e[32m Install Display Manager (Recommended Lightdm) \e[0m"
+				sudo pacman -S cinnamon-settings-daemon
+				echo -e "\e[32m Install Display Manager (Recommended Lightdm/GDM) \e[0m"
 				echo -e "\e[37m \e[0m"
 				jumpto dmmenu
 			elif [[ "$deinput" -eq 4 ]] ;then
 				echo "Deepin Desktop Environment Installation"
-				
+				sudo pacman -S --needed deepin deepin-extra
+				echo -e "\e[32m Install Display Manager (Recommended Lightdm) \e[0m"
+				echo -e "\e[37m \e[0m"
 				jumpto dmmenu
 			elif [[ "$deinput" -eq 5 ]] ;then
-				echo "LXDE Installation"
+				echo "LXQT Desktop Environment Installation"
+				sudo pacman -S lxqt
+				echo -e "\e[32m Install Display Manager (Recommended Lightdm) \e[0m"
+				echo -e "\e[37m \e[0m"
 				jumpto dmmenu
 			elif [[ "$deinput" -eq 6 ]] ;then
-				echo "LXQT Desktop Environment Installation"
+				echo "Mate Desktop Environment Installation"
+				sudo pacman -S mate
+				echo -e "\e[32m Install Display Manager (Recommended Lightdm) \e[0m"
+				echo -e "\e[37m \e[0m"
 				jumpto dmmenu
 			elif [[ "$deinput" -eq 7 ]] ;then
-				echo "Mate Desktop Environment Installation"
+				echo "XFCE Desktop Environment Installation"
+				sudo pacman -S xfce4
+				echo -e "\e[32m Install Display Manager (Recommended Lightdm) \e[0m"
+				echo -e "\e[37m \e[0m"
 				jumpto dmmenu
 			elif [[ "$deinput" -eq 8 ]] ;then
-				echo "XFCE Desktop Environment Installation"
-				jumpto dmmenu
-			elif [[ "$deinput" -eq 9 ]] ;then
 				echo "i3 Window Manager Installation"
 				sudo pacman -S i3-gaps i3lock i3status-rust
+				echo -e "\e[32m Install Display Manager (Recommended Lightdm) \e[0m"
+				echo -e "\e[37m \e[0m"
 				jumpto dmmenu
-			elif [[ "$deinput" -eq 10 ]] ;then
+			elif [[ "$deinput" -eq 9 ]] ;then
 				echo "bspwm Installation"
 				jumpto dmmenu
-			elif [[ "$deinput" -eq 11 ]] ;then
+			elif [[ "$deinput" -eq 10 ]] ;then
 				echo "awesome window Manager Installation"
+				yay -S awesome rofi picom i3lock-fancy xclip ttf-roboto polkit-gnome materia-theme lxappearance flameshot pnmixer network-manager-applet xfce4-power-manager qt5-styleplugins papirus-icon-theme -y
+				git clone https://github.com/ChrisTitusTech/titus-awesome ~/.config/awesome
+				mkdir -p ~/.config/rofi
+				cp $HOME/.config/awesome/theme/config.rasi ~/.config/rofi/config.rasi
+				sed -i '/@import/c\@import "'$HOME'/.config/awesome/theme/sidebar.rasi"' ~/.config/rofi/config.rasi
+				cd /etc/
+				sed -i -e '$aXDG_CURRENT_DESKTOP=Unity' environment
+				sed -i -e '$aQT_QPA_PLATFORMTHEME=gtk2' environment
 				jumpto dmmenu		            
 	    		fi
 	    
             	elif [[ "$input1" -eq 3 ]] ;then
 			dmmenu:
+			echo -e "\e[31m Install only one Display Manager \e[0m"
+			echo -e "\e[37m \e[0m"
             		echo Login / Display Managers
                 	echo i> Lightdm
             		echo ii> GDM
@@ -125,55 +146,26 @@ do
             	
 #################################### LIGHT DM ############################################            	
             		if [[ "$dminput" -eq 1 ]] ;then
-            			if [[ "$deinput" -eq 6 || "$deinput" -eq 9 || "$deinput" -eq 10 || "$deinput" -eq 11 || "$deinput" -eq 12 ]] ;then
-            				sudo pacman -S lightdm-webkit2-greeter numlockx --noconfirm
-            				yay -S lightdm-webkit2-theme-glorious
-            				cd /etc/lightdm
-            				sudo sed -i '/#greeter-session=/c\greeter-session=lightdm-webkit2-greeter' lightdm.conf
-            				sudo sed -i '/#greeter-setup-script=/c\greeter-setup-script=/usr/bin/numlockx on' lightdm.conf
-            			fi
-            				if [[ "$deinput" -eq 10 || "$deinput" -eq 11 || "$deinput" -eq 12 ]] ;then
-            					sudo sed -i '/#autologin-session=/c\autologin-session=i3' lightdm.conf
-            				fi
-            				
-            				sudo sed -i '/webkit_theme        = antergos/c\webkit_theme        = glorious' lightdm-webkit2-greeter.conf
-            				sudo systemctl enable lightdm.service
-            				jumpto start
-            			elif [[ "deinput" -eq 1 || "deinput" -eq 2 || "deinput" -eq 4 || "deinput" -eq 8 ]] ;then
-            				echo Using LightDM with Gnome based Desktop Environment will not give full features of gnome.
-            				echo It is recommended to use GDM with gnome based Desktop Environemnt.
-            				echo If you still want to install lightdm . Press Y -
-            				read $ldminput
-            				if [[ "$ldminput" = "Y" || "$ldminput" = "y" ]] ;then
-            					sudo pacman -S lightdm-webkit2-greeter numlockx --noconfirm
-            					yay -S lightdm-webkit2-theme-glorious
-            					cd /etc/lightdm
-            					sudo sed -i '/#greeter-session=/c\greeter-session=lightdm-webkit2-greeter' lightdm.conf
-            					sudo sed -i '/#greeter-setup-script=/c\greeter-setup-script=/usr/bin/numlockx on' lightdm.conf
-            					sudo sed -i '/webkit_theme        = antergos/c\webkit_theme        = glorious' lightdm-webkit2-greeter.conf
-            					sudo systemctl enable lightdm.service
-            					jumpto start
-            				fi
-			
+            			sudo pacman -S lightdm-webkit2-greeter numlockx --noconfirm
+            			yay -S lightdm-webkit2-theme-glorious
+            			cd /etc/lightdm
+            			sudo sed -i '/#greeter-session=/c\greeter-session=lightdm-webkit2-greeter' lightdm.conf
+            			sudo sed -i '/#greeter-setup-script=/c\greeter-setup-script=/usr/bin/numlockx on' lightdm.conf
+            			sudo sed -i '/webkit_theme        = antergos/c\webkit_theme        = glorious' lightdm-webkit2-greeter.conf
+            			sudo systemctl enable lightdm.service
+            			jumpto start
 ################################## GDM #########################################################            	
             		elif [[ "$dminput" -eq 2 ]] ;then
-            				sudo pacman -S gdm --noconfirm
-            				sudo systemctl enable gdm.service
-					jumpto start
+            			sudo pacman -S gdm --noconfirm
+            			sudo systemctl enable gdm.service
+				jumpto start
 ################################## SDDM ########################################################            		
             		elif [[ "$dminput" -eq 3 ]] ;then
             			sudo pacman -S sddm --noconfirm
             			cd /usr/lib/sddm/sddm.conf.d/
-				echo "Which theme do you want ?"
-				echo "You can search the names on AUR"
-				echo "1) archlinux-themes-sddm (Preview: )"
-				echo "2) Breeze (Preview: )"
-				echo "3) sddm-archlinux-theme-git (Preview: )"
-				echo "4) sddm-theme-deepin-git (Preview: )"
-				
-				yay -S archlinux-themes-sddm
+				yay -S sddm-theme-sugar-candy-git
             			sudo sed -i '/Numlock=/c\Numlock=on' default.conf
-            			sudo sed -i '/Current=/c\Current=archlinux-soft-grey' default.conf
+            			sudo sed -i '/Current=/c\Current=Sugar-Candy' default.conf
             			sudo systemctl enable sddm.service
 				jumpto start
 			fi            	
